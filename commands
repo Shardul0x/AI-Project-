@@ -1,0 +1,9 @@
+net start MongoDB
+
+.\start-all.bat
+
+ cd  ml-services
+ venv\Scripts\activate
+ python main_gpu.py
+
+
