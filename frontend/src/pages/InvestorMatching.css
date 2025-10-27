@@ -1,165 +1,557 @@
-.investor-container {
+/* Global Container */
+.investor-matching-container {
   max-width: 1400px;
   margin: 0 auto;
-  padding: 2rem;
-  animation: fadeIn 0.6s ease-out;
+  padding: 40px 20px;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f5f7fa 0%, #e8eef5 100%);
 }
 
+/* ============================================
+   HEADER
+   ============================================ */
 .investor-header {
   text-align: center;
-  margin-bottom: 3rem;
-  color: white;
+  margin-bottom: 50px;
+  animation: fadeInDown 0.6s ease-out;
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .investor-header h1 {
-  font-size: 3rem;
-  margin-bottom: 0.5rem;
-  text-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  font-size: 3.5rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 15px;
+  letter-spacing: -1px;
 }
 
 .investor-header p {
-  font-size: 1.2rem;
-  opacity: 0.9;
+  font-size: 1.3rem;
+  color: #64748b;
+  font-weight: 500;
 }
 
-.no-startup-card, .startup-summary-card {
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(10px);
-  border-radius: 20px;
-  padding: 2.5rem;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-  text-align: center;
-  margin-bottom: 3rem;
-}
-
-.profile-grid {
+/* ============================================
+   STATS CARDS
+   ============================================ */
+.stats-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1rem;
-  margin: 2rem 0;
-  text-align: left;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 25px;
+  margin-bottom: 50px;
+  animation: fadeInUp 0.6s ease-out 0.2s both;
 }
 
-.match-btn {
-  padding: 1.2rem 2.5rem;
-  background: linear-gradient(135deg, #667eea, #764ba2);
-  color: white;
-  border: none;
-  border-radius: 50px;
-  font-size: 1.1rem;
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.stat-card {
+  background: white;
+  padding: 30px 25px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+  text-align: center;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 2px solid transparent;
+}
+
+.stat-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 50px rgba(102, 126, 234, 0.15);
+  border-color: #667eea;
+}
+
+.stat-icon {
+  font-size: 3rem;
+  margin-bottom: 15px;
+}
+
+.stat-card h3 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 10px 0;
+}
+
+.stat-card p {
+  color: #64748b;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+/* ============================================
+   FILTERS SECTION
+   ============================================ */
+.filters-section {
+  background: white;
+  padding: 35px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+  margin-bottom: 50px;
+}
+
+.filters-section h2 {
+  font-size: 1.6rem;
+  color: #1e293b;
+  margin-bottom: 25px;
+  font-weight: 700;
+}
+
+.filters-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 25px;
+  margin-bottom: 25px;
+}
+
+.filter-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.filter-group label {
   font-weight: 600;
+  color: #475569;
+  margin-bottom: 10px;
+  font-size: 0.95rem;
+}
+
+.filter-group select {
+  padding: 14px 16px;
+  border: 2px solid #e2e8f0;
+  border-radius: 12px;
+  font-size: 1rem;
+  transition: all 0.3s;
+  background: white;
+  cursor: pointer;
+}
+
+.filter-group select:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
+}
+
+.filter-actions {
+  display: flex;
+  gap: 15px;
+  justify-content: flex-end;
+}
+
+.filter-btn {
+  padding: 14px 32px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 1rem;
   cursor: pointer;
   transition: all 0.3s;
-  box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+  border: none;
 }
 
-.match-btn:hover:not(:disabled) {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 30px rgba(102, 126, 234, 0.5);
+.apply-filter-btn {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
 }
 
-.match-btn:disabled {
-  background: #ccc;
-  cursor: not-allowed;
+.apply-filter-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 25px rgba(102, 126, 234, 0.4);
 }
 
+.reset-filter-btn {
+  background: #f1f5f9;
+  color: #475569;
+  border: 2px solid #e2e8f0;
+}
+
+.reset-filter-btn:hover {
+  background: #e2e8f0;
+}
+
+/* ============================================
+   INVESTORS GRID
+   ============================================ */
 .investors-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+  gap: 30px;
+  margin-bottom: 50px;
 }
 
 .investor-card {
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(10px);
-  border-radius: 20px;
-  padding: 2rem;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s;
-  animation: fadeIn 0.6s ease-out;
+  background: white;
+  border-radius: 24px;
+  padding: 35px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 2px solid transparent;
+  position: relative;
+  overflow: visible;
+  animation: cardFadeIn 0.6s ease-out both;
+}
+
+@keyframes cardFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 .investor-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15);
+  transform: translateY(-10px);
+  box-shadow: 0 25px 60px rgba(102, 126, 234, 0.2);
+  border-color: #667eea;
 }
 
-.investor-header {
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
-  margin-bottom: 1.5rem;
-  padding-bottom: 1.5rem;
-  border-bottom: 2px solid #f0f0f0;
-}
-
-.investor-logo {
-  width: 60px;
-  height: 60px;
+/* ============================================
+   MATCH SCORE BADGE
+   ============================================ */
+.match-score {
+  position: absolute;
+  top: -15px;
+  right: 25px;
+  width: 80px;
+  height: 80px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #667eea, #764ba2);
-  color: white;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: 1.5rem;
-  font-weight: bold;
-}
-
-.investor-header h3 {
-  margin-bottom: 0.5rem;
-}
-
-.match-score {
-  font-size: 0.9rem;
-  color: #666;
-}
-
-.match-score .score {
   font-weight: 700;
-  color: #4CAF50;
-  font-size: 1.1rem;
+  color: white;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+  z-index: 10;
 }
 
+.match-score.perfect {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+}
+
+.match-score.good {
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+}
+
+.match-score.moderate {
+  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+}
+
+.match-score.low {
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+}
+
+.score-number {
+  font-size: 1.8rem;
+  line-height: 1;
+}
+
+.score-label {
+  font-size: 0.65rem;
+  opacity: 0.95;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: 3px;
+}
+
+/* ============================================
+   CARD CONTENT
+   ============================================ */
+.investor-logo {
+  font-size: 4rem;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.investor-name {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 12px;
+  text-align: center;
+}
+
+.investor-type {
+  display: inline-block;
+  padding: 8px 20px;
+  background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%);
+  color: #0369a1;
+  border-radius: 30px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  width: 100%;
+  text-align: center;
+}
+
+.investor-description {
+  color: #64748b;
+  line-height: 1.7;
+  margin-bottom: 25px;
+  font-size: 0.95rem;
+  text-align: center;
+}
+
+/* ============================================
+   DETAILS
+   ============================================ */
 .investor-details {
-  margin-bottom: 1.5rem;
+  border-top: 2px solid #f1f5f9;
+  padding-top: 20px;
+  margin: 20px 0;
 }
 
 .detail-row {
   display: flex;
   justify-content: space-between;
-  padding: 0.8rem 0;
-  border-bottom: 1px solid #f0f0f0;
+  align-items: center;
+  margin-bottom: 15px;
+  padding: 10px 0;
 }
 
-.detail-row:last-child {
-  border-bottom: none;
-}
-
-.detail-row .label {
+.detail-label {
   font-weight: 600;
-  color: #666;
+  color: #475569;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
-.contact-btn {
-  width: 100%;
-  padding: 1rem;
-  background: #4CAF50;
-  color: white;
-  border: none;
-  border-radius: 12px;
+.detail-value {
+  font-weight: 700;
+  color: #1e293b;
+  font-size: 1rem;
+}
+
+.detail-value.highlight {
+  color: #667eea;
+}
+
+/* ============================================
+   FOCUS AREAS
+   ============================================ */
+.focus-areas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.focus-tag {
+  padding: 8px 16px;
+  background: #f1f5f9;
+  color: #475569;
+  border-radius: 20px;
+  font-size: 0.85rem;
   font-weight: 600;
-  cursor: pointer;
   transition: all 0.3s;
 }
 
+.focus-tag:hover {
+  background: #667eea;
+  color: white;
+  transform: scale(1.05);
+}
+
+/* ============================================
+   MATCH REASON
+   ============================================ */
+.match-reason {
+  background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+  padding: 18px;
+  border-radius: 12px;
+  margin: 20px 0;
+  border-left: 4px solid #f59e0b;
+}
+
+.match-reason strong {
+  display: block;
+  margin-bottom: 8px;
+  color: #92400e;
+  font-size: 0.95rem;
+}
+
+.match-reason p {
+  color: #78350f;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ============================================
+   CONTACT BUTTON
+   ============================================ */
+.contact-btn {
+  width: 100%;
+  padding: 16px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  border-radius: 14px;
+  font-weight: 700;
+  font-size: 1.05rem;
+  cursor: pointer;
+  margin-top: 25px;
+  transition: all 0.3s;
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.3);
+}
+
 .contact-btn:hover {
-  background: #45a049;
-  transform: translateY(-2px);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+}
+
+/* ============================================
+   LOADING STATE
+   ============================================ */
+.loading-container {
+  text-align: center;
+  padding: 100px 20px;
+}
+
+.loading-spinner {
+  width: 70px;
+  height: 70px;
+  border: 6px solid #e2e8f0;
+  border-top-color: #667eea;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 25px;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.loading-text {
+  font-size: 1.3rem;
+  color: #64748b;
+  font-weight: 600;
+}
+
+/* ============================================
+   EMPTY/ERROR STATE
+   ============================================ */
+.empty-state, .error-state {
+  text-align: center;
+  padding: 100px 40px;
+  background: white;
+  border-radius: 24px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+}
+
+.empty-icon, .error-icon {
+  font-size: 6rem;
+  margin-bottom: 25px;
+}
+
+.empty-state h2, .error-state h2 {
+  font-size: 2rem;
+  color: #1e293b;
+  margin-bottom: 15px;
+}
+
+.empty-state p, .error-state p {
+  font-size: 1.15rem;
+  color: #64748b;
+  margin-bottom: 35px;
+}
+
+.add-data-btn {
+  padding: 16px 40px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  border-radius: 14px;
+  font-weight: 700;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.3s;
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.3);
+}
+
+.add-data-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 1200px) {
+  .stats-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .filters-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 @media (max-width: 768px) {
+  .investor-header h1 {
+    font-size: 2.5rem;
+  }
+  
+  .stats-container {
+    grid-template-columns: 1fr;
+  }
+  
+  .filters-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .filter-actions {
+    flex-direction: column;
+  }
+  
+  .filter-btn {
+    width: 100%;
+  }
+  
   .investors-grid {
     grid-template-columns: 1fr;
+  }
+  
+  .match-score {
+    width: 70px;
+    height: 70px;
+    top: -10px;
+    right: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .investor-matching-container {
+    padding: 20px 10px;
+  }
+  
+  .investor-card {
+    padding: 25px 20px;
   }
 }

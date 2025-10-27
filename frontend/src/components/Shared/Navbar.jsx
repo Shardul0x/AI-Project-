@@ -19,7 +19,7 @@ const Navbar = () => {
       <div className="navbar-container">
         <Link to="/dashboard" className="navbar-brand">
           <div className="brand-icon">🚀</div>
-          <span className="brand-text">StartupAI</span>
+          <span className="brand-text">Propel Ai</span>
         </Link>
 
         <button 

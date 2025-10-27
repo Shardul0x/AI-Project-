@@ -63,7 +63,7 @@ const Dashboard = () => {
     <div className="dashboard-container">
       <div className="dashboard-header">
         <div className="header-content">
-          <h1 className="dashboard-title">Welcome to StartupAI 🚀</h1>
+          <h1 className="dashboard-title">Welcome to Propel Ai 🚀</h1>
           <p className="dashboard-subtitle">Your AI-powered startup growth platform</p>
         </div>
       </div>
